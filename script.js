@@ -468,6 +468,38 @@ console.log('%cFeel free to reach out: dhavalprajapati4518@gmail.com', 'color: #
 // ============================================
 // EXPORT FOR MODULE USAGE (IF NEEDED)
 // ============================================
+// PDF RESUME VIEWER
+// ============================================
+function viewResume() {
+    const viewer = document.getElementById('pdfViewer');
+    if (viewer) {
+        viewer.style.display = 'flex';
+    }
+}
+
+function closePdfViewer() {
+    const viewer = document.getElementById('pdfViewer');
+    if (viewer) {
+        viewer.style.display = 'none';
+    }
+}
+
+function downloadResume(event) {
+    // Allow default download behavior
+    const link = event.target.closest('a');
+    if (link) {
+        link.setAttribute('target', '_self');
+    }
+}
+
+// Close PDF viewer when clicking outside
+document.addEventListener('click', (e) => {
+    const viewer = document.getElementById('pdfViewer');
+    if (viewer && viewer.style.display === 'flex' && e.target === viewer) {
+        closePdfViewer();
+    }
+});
+
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = {
         initCursor: animateFollower,
