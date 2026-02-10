@@ -214,17 +214,18 @@ nav.scrolled {
     text-decoration: none;
     letter-spacing: -1px;
     position: relative;
-    padding: 5px 0;
     display: flex;
     align-items: center;
+    height: 60px;
 }
 
 .logo-img {
-    height: 50px;
+    height: 60px;
     width: auto;
-    max-width: 200px;
+    max-width: 400px;
     object-fit: contain;
     transition: var(--transition);
+    display: block;
 }
 
 .logo:hover .logo-img {
