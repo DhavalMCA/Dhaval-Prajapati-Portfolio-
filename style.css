@@ -217,13 +217,12 @@ nav.scrolled {
     display: flex;
     align-items: center;
     height: auto;
-    min-width: 200px;
 }
 
 .logo-img {
-    height: 80px;
+    height: 50px;
     width: auto;
-    max-width: 500px;
+    max-width: 300px;
     object-fit: contain;
     transition: var(--transition);
     display: block;
