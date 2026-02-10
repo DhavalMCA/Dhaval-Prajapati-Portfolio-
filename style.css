@@ -216,13 +216,14 @@ nav.scrolled {
     position: relative;
     display: flex;
     align-items: center;
-    height: 60px;
+    height: auto;
+    min-width: 200px;
 }
 
 .logo-img {
-    height: 60px;
+    height: 80px;
     width: auto;
-    max-width: 400px;
+    max-width: 500px;
     object-fit: contain;
     transition: var(--transition);
     display: block;
