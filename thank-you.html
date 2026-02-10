@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You - Dhaval Prajapati</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: #050714;
+            color: #F4F4F9;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .bg-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(#2D2D2D 1px, transparent 1px),
+                linear-gradient(90deg, #2D2D2D 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.1;
+            z-index: 0;
+        }
+        
+        .container {
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            animation: slideUp 0.8s ease-out;
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .success-icon {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #FF6B35, #00D9FF);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            font-size: 60px;
+            color: #050714;
+            animation: scaleIn 0.5s ease-out 0.3s backwards;
+            box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.9);
+        }
+        
+        @keyframes scaleIn {
+            from {
+                transform: scale(0);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        
+        h1 {
+            font-family: 'Syne', sans-serif;
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #FF6B35, #00D9FF, #F7B801);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: slideUp 0.8s ease-out 0.4s backwards;
+        }
+        
+        p {
+            font-size: 18px;
+            color: #8B8B8B;
+            line-height: 1.7;
+            margin-bottom: 40px;
+            animation: slideUp 0.8s ease-out 0.5s backwards;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 18px 40px;
+            background: #FF6B35;
+            color: #0A0E27;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 8px;
+            transition: all 0.4s ease;
+            box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.9);
+            transform: translate(-4px, -4px);
+            animation: slideUp 0.8s ease-out 0.6s backwards;
+        }
+        
+        .btn:hover {
+            transform: translate(0, 0);
+            box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.9);
+        }
+        
+        .btn i {
+            margin-right: 10px;
+        }
+        
+        .countdown {
+            font-size: 14px;
+            color: #8B8B8B;
+            margin-top: 30px;
+            animation: slideUp 0.8s ease-out 0.7s backwards;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 36px;
+            }
+            
+            p {
+                font-size: 16px;
+            }
+            
+            .success-icon {
+                width: 100px;
+                height: 100px;
+                font-size: 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-grid"></div>
+    
+    <div class="container">
+        <div class="success-icon">
+            <i class="fas fa-check"></i>
+        </div>
+        
+        <h1>Thank You!</h1>
+        
+        <p>
+            Your message has been successfully sent. I appreciate you reaching out and will get back to you as soon as possible.
+        </p>
+        
+        <a href="index.html" class="btn">
+            <i class="fas fa-arrow-left"></i> Back to Portfolio
+        </a>
+        
+        <p class="countdown">Redirecting to homepage in <span id="timer">5</span> seconds...</p>
+    </div>
+    
+    <script>
+        // Auto redirect after 5 seconds
+        let countdown = 5;
+        const timerElement = document.getElementById('timer');
+        
+        const interval = setInterval(() => {
+            countdown--;
+            timerElement.textContent = countdown;
+            
+            if (countdown <= 0) {
+                clearInterval(interval);
+                window.location.href = 'index.html';
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
