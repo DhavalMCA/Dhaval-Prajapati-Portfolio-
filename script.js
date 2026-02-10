@@ -409,8 +409,11 @@ const contactForm = document.getElementById('contactForm');
 const formStatus = document.getElementById('formStatus');
 
 if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
+    contactForm.addEventListener('submit', async function(e) {
+        e.preventDefault(); // Prevent default form submission
+        
         const submitBtn = contactForm.querySelector('.btn-submit');
+        const formData = new FormData(contactForm);
         
         // Show loading state
         submitBtn.disabled = true;
@@ -418,7 +421,36 @@ if (contactForm) {
         formStatus.className = 'form-status';
         formStatus.innerHTML = '<i class="fas fa-info-circle"></i> Sending your message...';
         
-        // Form will submit to FormSubmit automatically
+        try {
+            // Submit form via AJAX to FormSubmit
+            const response = await fetch(contactForm.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+            
+            if (response.ok) {
+                // Success - redirect to thank you page immediately
+                // This bypasses FormSubmit's default thank you page
+                const currentUrl = window.location.href;
+                const baseUrl = currentUrl.substring(0, currentUrl.lastIndexOf('/') + 1);
+                window.location.href = baseUrl + 'thank-you.html';
+            } else {
+                // Error handling
+                formStatus.className = 'form-status error';
+                formStatus.innerHTML = '<i class="fas fa-exclamation-circle"></i> Something went wrong. Please try again.';
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+            }
+        } catch (error) {
+            // Network error handling
+            formStatus.className = 'form-status error';
+            formStatus.innerHTML = '<i class="fas fa-exclamation-circle"></i> Network error. Please check your connection.';
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+        }
     });
 }
 
