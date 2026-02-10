@@ -222,7 +222,7 @@ nav.scrolled {
 .logo-img {
     height: 45px;
     width: auto;
-    max-width: 250px;
+    max-width: 300px;
     object-fit: contain;
     transition: var(--transition);
     display: block;
