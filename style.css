@@ -215,6 +215,20 @@ nav.scrolled {
     letter-spacing: -1px;
     position: relative;
     padding: 5px 0;
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    height: 50px;
+    width: auto;
+    max-width: 200px;
+    object-fit: contain;
+    transition: var(--transition);
+}
+
+.logo:hover .logo-img {
+    transform: scale(1.05);
 }
 
 .logo::after {
